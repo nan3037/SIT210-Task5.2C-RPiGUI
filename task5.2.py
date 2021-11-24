@@ -5,229 +5,39 @@ import tkinter.font
 from gpiozero import LED
 
 GPIO.setmode(GPIO.BCM)
-myled = LED(18)
+REDled = LED(24)
+GREENled = LED(25)
+YELLOWled = LED(23)
+
 
 mywin = Tk()
-mywin.title("Morse Code GUI")
+mywin.title("TRAFFIC LIGHTS")
 myFont = tkinter.font.Font(family = "Georgia", size = 22, weight = "bold")
-inputFont = tkinter.font.Font(family = "Arial", size = 16)
 mywin.minsize(540, 420)
-mywin.configure(bg = "white")
+mywin.configure(bg = "black")
 
-def dot():
-    myled.on()
-    time.sleep(0.5)
-    myled.off()
-    time.sleep(0.15)
-    
-def dash():
-    myled.on()
-    time.sleep(1.5)
-    myled.off()
-    time.sleep(0.15)
-    
-def a():
-    dot()
-    dash()
+def REDledSwitch():
+    if REDled.is_lit:
+        REDled.off()
+    else:
+        REDled.on()
+def GREENledSwitch():
+    if GREENled.is_lit:
+        GREENled.off()
+    else:
+        GREENled.on()
+def YELLOWledSwitch():
+    if YELLOWled.is_lit:
+        YELLOWled.off()
+    else:
+        YELLOWled.on() 
 
-def b():
-    dash()
-    dot()
-    dot()
-    dot()
+botton1= Button(mywin, text = "Red On", font = myFont, command = REDledSwitch, bg = "red" , height = 2, width = 10)
+botton1.grid(row = 2, column = 5)
 
-def c():
-    dash()
-    dot()
-    dash()
-    dot()
+botton2= Button(mywin, text = "Green On", font = myFont, command = GREENledSwitch, bg = "green" , height = 2, width = 10)
+botton2.grid(row = 3, column = 5)
 
-def d():
-    dash()
-    dot()
-    dot()
-
-def e():
-    dot()
-
-def f():
-    dot()
-    dot()
-    dash()
-    dot()
-    
-def g():
-    dot()
-    dot()
-    dash()
-
-def h():
-    dot()
-    dot()
-    dot()
-    dot()
-    
-def i():
-    dot()
-    dot()
-
-def j():
-    dot()
-    dash()
-    dash()
-    dash()
-    
-def k():
-    dash()
-    dot()
-    dash()
-    
-def l():
-    dot()
-    dash()
-    dot()
-    dot()
-    
-def m():
-    dash()
-    dash()
-    
-def n():
-    dash()
-    dot()
-    
-def o():
-    dash()
-    dash()
-    dash()
-    
-def p():
-    dot()
-    dash()
-    dash()
-    dot()
-    
-def q():
-    dash()
-    dash()
-    dot()
-    dash()
-    
-def r():
-    dot()
-    dash()
-    dot()
-    
-def s():
-    dot()
-    dot()
-    dot()
-    
-def t():
-    dash()
-    
-def u():
-    dot()
-    dot()
-    dash()
-    
-def v():
-    dot()
-    dot()
-    dot()
-    dash()
-    
-def w():
-    dot()
-    dash()
-    dash()    
-
-def x():
-    dash()
-    dot()
-    dot()
-    dash()
-    
-def y():
-    dash()
-    dot()
-    dash()
-    dash()
-    
-def z():
-    dash()
-    dash()
-    dot()
-    dot()
-    
-       
-def ledSwitch():
-    
-    blinkText = codeText.get() #range set upto 13 hence it would take values up until 12 characters
-    
-    for letter in blinkText:
-        print(letter, " ")
-        if letter == "a":
-            a()
-        elif letter == "b":
-            b()
-        elif letter == "c":
-            c()
-        elif letter == "d":
-            d()
-        elif letter == "e":
-            e()
-        elif letter == "f":
-            f()
-        elif letter == "g":
-            g()
-        elif letter == "h":
-            h()
-        elif letter == "i":
-            i()
-        elif letter == "j":
-            j()
-        elif letter == "k":
-            k()
-        elif letter == "l":
-            l()
-        elif letter == "m":
-            m()
-            
-        elif letter == "n":
-            n()
-        elif letter == "o":
-            o()
-        elif letter == "p":
-            p()
-        elif letter == "q":
-            q()
-        elif letter == "r":
-            r()
-        elif letter == "s":
-            s()
-        elif letter == "t":
-            t()
-        elif letter == "u":
-            u()
-        elif letter == "v":
-            v()
-        elif letter == "w":
-            w()
-        elif letter == "x":
-            x()
-        elif letter == "y":
-            y()
-        elif letter == "z":
-            z()
-        time.sleep(3.5)
-
-codeText = Entry(mywin, width=12, font = inputFont)
-codeText.grid(row = 3, column = 50)
-codeText.grid(padx = 20,pady = 20)
-    
-button= Button(mywin, text = "Start Blinking", font = myFont, command = ledSwitch, bg = "blue" , height = 2, width = 10)
-button.grid(row = 5, column = 50)
-codeText.grid(padx = 20, pady =20)
-
+botton3= Button(mywin, text = "Yellow On", font = myFont, command = YELLOWledSwitch, bg = "yellow" , height = 2, width = 10)
+botton3.grid(row = 4, column = 5)
   
